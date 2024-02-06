@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/02 11:33:42 by bfresque          #+#    #+#             */
-/*   Updated: 2024/02/02 14:13:33 by bfresque         ###   ########.fr       */
+/*   Created: 2024/02/05 10:50:27 by bfresque          #+#    #+#             */
+/*   Updated: 2024/02/05 11:40:46 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 
-Zombie::Zombie(std::string name)
-{
-	this->_name = name;
-	return;
-}
+# include <iostream>
 
-Zombie::~Zombie(void)
+class Weapon
 {
-	std::cout << "Zombie " << this->_name << " is destroyed\n";
-	return;
-}
+	private:
+		std::string _type;
+	public:
+		Weapon(std::string weapon);
+		~Weapon(void);
+		std::string &getType();
+		void setType(std::string type);
+};
 
-void	Zombie::annouce(void) const
-{
-	std::cout << this->_name << " BraiiiiiiinnnzzzZ..." << std::endl;
-	return;
-}
+#endif

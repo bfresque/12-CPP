@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/02 11:33:42 by bfresque          #+#    #+#             */
-/*   Updated: 2024/02/02 14:13:33 by bfresque         ###   ########.fr       */
+/*   Created: 2024/02/05 10:50:14 by bfresque          #+#    #+#             */
+/*   Updated: 2024/02/05 12:03:55 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "HumanB.hpp"
 
-Zombie::Zombie(std::string name)
+HumanB::HumanB(std::string name) : _weapon(nullptr)
 {
 	this->_name = name;
 	return;
 }
 
-Zombie::~Zombie(void)
+HumanB::~HumanB(void)
 {
-	std::cout << "Zombie " << this->_name << " is destroyed\n";
 	return;
 }
 
-void	Zombie::annouce(void) const
+void HumanB::attack(void) const
 {
-	std::cout << this->_name << " BraiiiiiiinnnzzzZ..." << std::endl;
+	if (this->_weapon)
+		std::cout << this->_name << " attacks with their " << this->_weapon->getType() << std::endl;
+	else
+		std::cout << this->_name << " has no weapon" << std::endl;
+	return;
+}
+
+void	HumanB::setWeapon(Weapon& newWeapon)
+{
+	_weapon = &newWeapon;
 	return;
 }

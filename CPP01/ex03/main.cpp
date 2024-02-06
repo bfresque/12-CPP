@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/02 11:33:42 by bfresque          #+#    #+#             */
-/*   Updated: 2024/02/02 14:13:33 by bfresque         ###   ########.fr       */
+/*   Created: 2024/02/05 10:48:32 by bfresque          #+#    #+#             */
+/*   Updated: 2024/02/05 12:01:43 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
 
-Zombie::Zombie(std::string name)
+int	main()
 {
-	this->_name = name;
-	return;
-}
+	{
+	Weapon	club = Weapon("crude spiked club");
 
-Zombie::~Zombie(void)
-{
-	std::cout << "Zombie " << this->_name << " is destroyed\n";
-	return;
-}
+	HumanA bob("Bob", club);
+	bob.attack();
+	club.setType("some other type of club");
+	bob.attack();
+	}
+	{
+	Weapon	club = Weapon("crude spiked club");
 
-void	Zombie::annouce(void) const
-{
-	std::cout << this->_name << " BraiiiiiiinnnzzzZ..." << std::endl;
-	return;
+	HumanB jim("Jim");
+	jim.setWeapon(club);
+	jim.attack();
+	club.setType("some other type of club");
+	jim.attack();
+	}
+	return (0);
 }

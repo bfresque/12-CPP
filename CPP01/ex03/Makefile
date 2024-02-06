@@ -1,9 +1,9 @@
-NAME	=	BraiiinzzzZ
+NAME	=	weapon
 
 SRC	=	main.cpp \
-		Zombie.cpp \
-		randomChump.cpp \
-		newZombie.cpp \
+		HumanA.cpp \
+		HumanB.cpp \
+		Weapon.cpp
 
 OBJ	=	$(SRC:.cpp=.o)
 

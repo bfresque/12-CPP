@@ -1,9 +1,6 @@
-NAME	=	BraiiinzzzZ
+NAME	=	hiHereTheBrain
 
-SRC	=	main.cpp \
-		Zombie.cpp \
-		randomChump.cpp \
-		newZombie.cpp \
+SRC	=	main.cpp
 
 OBJ	=	$(SRC:.cpp=.o)
 

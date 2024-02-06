@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/02 11:33:42 by bfresque          #+#    #+#             */
-/*   Updated: 2024/02/02 14:13:33 by bfresque         ###   ########.fr       */
+/*   Created: 2024/02/05 14:57:14 by bfresque          #+#    #+#             */
+/*   Updated: 2024/02/06 11:31:34 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
 
-Zombie::Zombie(std::string name)
-{
-	this->_name = name;
-	return;
-}
+#ifndef HARL_HPP
+# define HARL_HPP
+# include <iostream>
 
-Zombie::~Zombie(void)
+class Harl
 {
-	std::cout << "Zombie " << this->_name << " is destroyed\n";
-	return;
-}
+	private:
+		void	_debug(void);
+		void	_info(void);
+		void	_warning(void);
+		void	_error(void);
 
-void	Zombie::annouce(void) const
-{
-	std::cout << this->_name << " BraiiiiiiinnnzzzZ..." << std::endl;
-	return;
-}
+	public:
+		void	complain(std::string level);
+		Harl(void);
+		~Harl();
+};
+
+struct t_level {
+	std::string level;
+	void (Harl::*function)(void);
+};
+
+#endif

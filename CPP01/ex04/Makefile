@@ -1,9 +1,6 @@
-NAME	=	BraiiinzzzZ
+NAME	=	fileReplace
 
 SRC	=	main.cpp \
-		Zombie.cpp \
-		randomChump.cpp \
-		newZombie.cpp \
 
 OBJ	=	$(SRC:.cpp=.o)
 
