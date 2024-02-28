@@ -1,52 +1,88 @@
-#include <map>
+#ifndef FIXED_HPP
+# define FIXED_HPP
 
-void Harl::complain(std::string level) {
-    void (Harl::*funcs[])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
-    std::map<std::string, int> levelMap = {{"DEBUG", 0}, {"INFO", 1}, {"WARNING", 2}, {"ERROR", 3}};
+# include <iostream>
 
-    auto it = levelMap.find(level);
-    if (it != levelMap.end()) {
-        (this->*funcs[it->second])();
-    } else {
-        std::cout << "Invalid level: " << level << std::endl;
-    }
+class Fixed
+{
+	private:
+		int	_n;
+		static const int _value = 8;
+	public:
+		Fixed();
+		Fixed(const int integerNum);
+		Fixed(const float floatNum);
+		Fixed(const Fixed &copy);
+		Fixed& operator=(const Fixed& rhs);
+		~Fixed();
+		int		toInt(void) const;
+		float	toFloat(void) const;
+		int		getRawBits(void) const;
+		void	setRawBits(int const raw);
+};
+
+std::ostream& operator<<(std::ostream& os, const Fixed& fi);
+
+#endif
+
+Fixed::Fixed() // constructeur par defaut
+{
+	this->_n = 0;
+	std::cout << "Default constructor called" << std::endl;
+	return;
 }
 
-
-void Harl::complain(std::string level) {
-
-    // Association de chaque niveau à sa fonction
-    t_level levelFunctions[4] = {
-        {"DEBUG", &Harl::_debug},
-        {"INFO", &Harl::_info},
-        {"WARNING", &Harl::_warning},
-        {"ERROR", &Harl::_error}
-    };
-
-    // Je parcours le tab pour trouver la fonction correspondante au niveau donné
-    for (int i = 0; i < 4; i++) {
-        if (level == levelFunctions[i].level) {
-            (this->*(levelFunctions[i].function))();
-            return;
-        }
-    }
-    std::cout << "Error: " MSG_LEVEL << std::endl;
+Fixed::~Fixed() // destructeur par defaut
+{
+	std::cout << "Destructor called" << std::endl;
+	return;
 }
 
-/* NOTE EXPLICATIVE
+Fixed::Fixed(const Fixed &copy)  // constructeur de copy
+{
+	std::cout << "Copy constructor called" << std::endl;
+	this->_n = copy.getRawBits();
+	return;
+}
 
-    Au lieu d'utiliser une série de déclarations if et else if pour décider quelle
-    action effectuer en fonction du level, j'utilise des pointeurs de fonction
-    membres pour appeler la fonction appropriée en fonction du level spécifié.
+Fixed::Fixed(const int integerNum) // constructeur de int
+{
+	std::cout << "Int constructor called" << std::endl;
+	this->setRawBits(integerNum << this->_value);
+	return;
+}
 
-    La partie clé de cette fonction est la struct t_level.
-    Cette struct agit comme une sorte de dictionnaire qui associe chaque level
-    (comme "_debug" ou "_info") à la fonction membre correspondante de la classe Harl
-    (comme Harl::_debug ou Harl::_info).
+Fixed::Fixed(const float floatNum) // constructeur de float
+{
+	std::cout << "Float constructor called" << std::endl;
+	int twoPower = 1 << this->_value;
+	int rawValue = (int)roundf(floatNum * twoPower);
+	this->setRawBits(rawValue);
+	return;
+}
 
-    Ensuite, je cree un tableau levelFunctions de cette struct, où chaque élément
-    du tableau contient un level et le pointeur vers la fonction membre correspondante.
+int	Fixed::toInt(void) const
+{
+	return (getRawBits() >> _value);
+}
 
-    Puis je parcours le tableau pour associer en fonction de l'entrée utilisateur
+float	Fixed::toFloat( void ) const
+{
+	return (this->_n / pow(2, this->_value));
+}
 
- */
+int	Fixed::getRawBits(void) const
+{
+	return(this->_n);
+}
+
+void	Fixed::setRawBits(const int raw)
+{
+	this->_n = raw;
+	return;
+}
+
+std::ostream &operator<<(std::ostream &o, Fixed const &f)
+{
+	return (o << f.toFloat());
+}
