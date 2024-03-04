@@ -6,36 +6,35 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 11:18:43 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/01 10:38:32 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/03/01 10:42:29 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int	main(void)
 {
-	ScavTrap	Jim("Jim");
-	ScavTrap	Bob("Bob");
+	FragTrap	Jim("Jim");
+	FragTrap	Bob("Bob");
 
 	std::cout << std::endl;
-	Jim.attack("his enemy");
+	Jim.attack("his best friend");
 	Jim.takeDamage(7);
 	Jim.beRepaired(2);
 	Jim.takeDamage(5);
 	Jim.takeDamage(90);
-	Jim.attack("his enemy");
+	Jim.attack("his best friend");
 	Jim.beRepaired(42);
 
 	std::cout << std::endl;
 	for (int i = 0; i < 5; i++)
-		Bob.attack("a branch");
-	Bob.guardGate();
+		Bob.attack("a stone");
+	Bob.highFivesGuys();
 	Bob.takeDamage(99);
 	Bob.beRepaired(1);
 	Bob.takeDamage(2);
-	Bob.attack("a branch");
+	Bob.attack("a stone");
 	std::cout << std::endl;
 	return (0);
 }
-// besoin de la fonction de surche d'operateur ou pas ???
-// mes perso sont construits sous deux constructeurs differents ScavTrap et ClapTrap, est ce bon ?
+// faire des boucles pour tester l'energy_points
