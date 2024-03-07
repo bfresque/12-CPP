@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:33:42 by bfresque          #+#    #+#             */
-/*   Updated: 2024/02/22 11:38:39 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/03/06 14:04:49 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,12 +151,12 @@ Fixed	Fixed::operator-(const Fixed& rhs) const
 Fixed	Fixed::operator*(const Fixed& rhs) const
 {
 	return Fixed(this->toFloat() * rhs.toFloat());
-} // Convertit en float pour la multiplication
+}
 
 Fixed	Fixed::operator/(const Fixed& rhs) const
 {
 	return Fixed(this->toFloat() / rhs.toFloat());
-} // Convertit en float pour la division
+}
 
 Fixed&	Fixed::operator++()
 {

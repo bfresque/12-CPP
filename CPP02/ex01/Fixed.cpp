@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 11:33:42 by bfresque          #+#    #+#             */
-/*   Updated: 2024/02/21 14:49:12 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/03/06 13:49:51 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,6 @@ Fixed::Fixed(const float floatNum) // constructeur de float
 	return;
 }
 
-Fixed&	Fixed::operator=(const Fixed& rhs)
-{
-	std::cout << "Copy assignment operator called" << std::endl;
-	this->_n = rhs.getRawBits();
-	return (*this);
-}
-
 int	Fixed::toInt(void) const
 {
 	return (getRawBits() >> this->_value);
@@ -63,7 +56,13 @@ int	Fixed::toInt(void) const
 float	Fixed::toFloat(void) const
 {
 	int twoPower = 1 << this->_value;
-	return (static_cast<float>(this->_n) / twoPower);
+	return ((float)this->_n / twoPower);
+}
+
+void	Fixed::setRawBits(const int raw)
+{
+	this->_n = raw;
+	return;
 }
 
 int	Fixed::getRawBits(void) const
@@ -71,10 +70,11 @@ int	Fixed::getRawBits(void) const
 	return(this->_n);
 }
 
-void	Fixed::setRawBits(const int raw)
+Fixed&	Fixed::operator=(const Fixed& rhs)
 {
-	this->_n = raw;
-	return;
+	std::cout << "Copy assignment operator called" << std::endl;
+	this->_n = rhs.getRawBits();
+	return (*this);
 }
 
 std::ostream &operator<<(std::ostream &o, Fixed const &f)

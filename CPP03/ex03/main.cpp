@@ -6,35 +6,76 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 11:18:43 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/01 10:42:29 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:08:34 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "DiamondTrap.hpp"
 #include "FragTrap.hpp"
+#include "ScavTrap.hpp"
+#include "ClapTrap.hpp"
 
-int	main(void)
-{
-	FragTrap	Jim("Jim");
-	FragTrap	Bob("Bob");
+int    main(void) {
+    ClapTrap    fight1("Gaga");
+    ScavTrap    fight2("Bibi");
+    FragTrap    fight3("Tom");
+    DiamondTrap    fight4("Sun");
+    DiamondTrap    fightDefault;
 
-	std::cout << std::endl;
-	Jim.attack("his best friend");
-	Jim.takeDamage(7);
-	Jim.beRepaired(2);
-	Jim.takeDamage(5);
-	Jim.takeDamage(90);
-	Jim.attack("his best friend");
-	Jim.beRepaired(42);
+    std::cout << "\n    ~~~ Default's fight ~~~" << std::endl;
+    fightDefault.attack("Bibi");
+    fightDefault.takeDamage(7);
 
-	std::cout << std::endl;
-	for (int i = 0; i < 5; i++)
-		Bob.attack("a stone");
-	Bob.highFivesGuys();
-	Bob.takeDamage(99);
-	Bob.beRepaired(1);
-	Bob.takeDamage(2);
-	Bob.attack("a stone");
-	std::cout << std::endl;
-	return (0);
+    std::cout << "\n    ~~~ Gaga's fight ~~~" << std::endl;
+    fight1.attack("a Zombie");
+    fight1.takeDamage(7);
+    fight1.beRepaired(2);
+    fight1.takeDamage(5);
+    fight1.takeDamage(90);
+    fight1.attack("a Zombie");
+    fight1.beRepaired(42);
+
+    std::cout << "\n    ~~~ Bibi's fight ~~~" << std::endl;
+    for (int i = 0; i < 5; i++)
+        fight2.attack("Stone");
+    fight2.guardGate();
+    fight2.takeDamage(99);
+    fight2.beRepaired(1);
+    fight2.takeDamage(2);
+    fight2.attack("Stone");
+    fight2.guardGate();
+
+    std::cout << "\n    ~~~ Tom's fight ~~~" << std::endl;
+    fight3.highFivesGuys();
+    for (int i = 0; i < 5; i++)
+        fight3.attack("a door");
+    fight3.highFivesGuys();
+    fight3.takeDamage(42);
+    fight3.beRepaired(24);
+    fight3.takeDamage(42);
+    fight3.attack("a door");
+    fight3.highFivesGuys();
+
+
+    std::cout << "\n    ~~~ Sun's fight ~~~" << std::endl;
+    fight4.whoAmI();
+    fight4.takeDamage(42);
+    fight4.beRepaired(24);
+    fight4.takeDamage(24);
+    fight4.takeDamage(420);
+    fight4.beRepaired(42);
+    fight4.whoAmI();
+
+    std::cout << std::endl;
+
+    // for (int i = 0; i < 10; i++)
+    //     fight1.attack("Bibi");
+
+    // for (int i = 0; i < 10; i++)
+    //     fight1.takeDamage(0);
+
+    // for (int i = 0; i < 10; i++)
+    //     fight1.beRepaired(0);
+
+    return (0);
 }
-// faire des boucles pour tester l'energy_points

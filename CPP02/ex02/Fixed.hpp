@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 10:52:43 by bfresque          #+#    #+#             */
-/*   Updated: 2024/02/22 11:38:24 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/03/06 14:00:48 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,27 +27,24 @@ class Fixed
 		Fixed(const float floatNum);
 		Fixed(const Fixed &copy);
 		~Fixed();
-		Fixed&	operator=(const Fixed& rhs);
-		bool	operator>(const Fixed& rhs) const;
-		bool	operator<(const Fixed& rhs) const;
-		bool	operator>=(const Fixed& rhs) const;
-		bool	operator<=(const Fixed& rhs) const;
-		bool	operator==(const Fixed& rhs) const;
-		bool	operator!=(const Fixed& rhs) const;
+		bool operator>(const Fixed &rhs) const;
+		bool operator<(const Fixed &rhs) const;
+		bool operator>=(const Fixed &rhs) const;
+		bool operator<=(const Fixed &rhs) const;
+		bool operator==(const Fixed &rhs) const;
+		bool operator!=(const Fixed &rhs) const;
 
-		Fixed	operator+(const Fixed& rhs) const;
-		Fixed	operator-(const Fixed& rhs) const;
-		Fixed	operator*(const Fixed& rhs) const;
-		Fixed	operator/(const Fixed& rhs) const;
+		Fixed operator+(const Fixed &rhs) const;
+		Fixed operator-(const Fixed &rhs) const;
+		Fixed operator*(const Fixed &rhs) const;
+		Fixed operator/(const Fixed &rhs) const;
 
-		Fixed&	operator++();
-		Fixed	operator++(int);
-		Fixed&	operator--();
-		Fixed	operator--(int);
-		
+		Fixed &operator++();
+		Fixed operator++(int);
+		Fixed &operator--();
+		Fixed operator--(int);
+		Fixed &operator=(const Fixed &rhs);
 
-
-		
 		int				toInt(void) const;
 		float			toFloat(void) const;
 		int				getRawBits(void) const;

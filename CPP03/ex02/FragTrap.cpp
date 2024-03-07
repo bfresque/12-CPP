@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 10:17:54 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/01 10:41:22 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/03/07 12:26:44 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ FragTrap::FragTrap(FragTrap &copy): ClapTrap(copy)
 	return;
 }
 
-FragTrap	&FragTrap::operator=(FragTrap &other)
+FragTrap &FragTrap::operator=(FragTrap &other)
 {
 	std::cout << "FragTrap Assignation operator called" << std::endl;
 	this->_name = other._name;
@@ -57,6 +57,12 @@ FragTrap::~FragTrap()
 
 void	FragTrap::highFivesGuys(void)
 {
-	std::cout << "FragTrap " << this->_name << " said: Guys it's time for a high five !!" << std::endl;
+	if (this->_energyPoints <= 0)
+		std::cout << RED << "FragTrap " << this->_name << " tries to do a high five, but has no energy left." << RESET << std::endl;
+	else if(this->_hitPoints <= 0)
+		std::cout << RED << "FragTrap " << this->_name << " tries to do a high five, but has no hit points left." << RESET << std::endl;
+	else
+		std::cout << CYAN << "FragTrap " << this->_name << " said: Guys it's time for a high five !!" << RESET << std::endl;
+	return;
 }
 

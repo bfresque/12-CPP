@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 11:18:46 by bfresque          #+#    #+#             */
-/*   Updated: 2024/02/29 12:05:07 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/03/07 10:05:45 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ ClapTrap::ClapTrap(ClapTrap &copy)
 {
 	std::cout << "ClapTrap Copy Constructor called" << std::endl;
 	*this = copy;
+	return;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &other)
@@ -67,6 +68,7 @@ void	ClapTrap::attack(const std::string& target)
 		std::cout << std::endl;
 		this->_energyPoints--;
 	}
+	return;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
@@ -85,6 +87,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 	}
 	else
 		std::cout << YELLOW << "ClapTrap " << this->_name << " is already dead" << RESET << std::endl;
+	return;
 
 }
 
@@ -117,5 +120,6 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		this->_hitPoints += amount;
 		std::cout << "ClapTrap " << this->_name << " repaired itself with " << amount << " hit points. He have " << this->_hitPoints << " hit points. And " << this->_energyPoints << " energy left." << std::endl;
 	}
+	return;
 }
 

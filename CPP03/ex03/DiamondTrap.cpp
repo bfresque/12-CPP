@@ -6,29 +6,29 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 10:44:18 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/01 12:43:04 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:12:51 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(): ClapTrap("Default_name_clap_name"), FragTrap(), ScavTrap()
+DiamondTrap::DiamondTrap() : ClapTrap("Default_name_clap_name"), ScavTrap(), FragTrap()
 {
-	std::cout << "DiamondTrap Default Constructor called "<< std::endl;
 	this->_name = "Default_name";
 	this->_hitPoints = FragTrap::_hitPoints;
 	this->_energyPoints = ScavTrap::_energyPoints;
 	this->_attackDamage = FragTrap::_attackDamage;
+	std::cout << "DiamondTrap Default Constructor called "<< std::endl;
 	return;
 }
 
-DiamondTrap::DiamondTrap(std::string name): ClapTrap(name + "_clap_name"), FragTrap(name), ScavTrap(name)
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name)
 {
-	std::cout << "DiamondTrap Constructor, "<< this->_name << " is ready to fight !" << std::endl;
 	this->_name = name;
 	this->_hitPoints = FragTrap::_hitPoints;
 	this->_energyPoints = ScavTrap::_energyPoints;
 	this->_attackDamage = FragTrap::_attackDamage;
+	std::cout << "DiamondTrap Constructor, "<< this->_name << " is ready to fight !" << std::endl;
 	return;
 }
 
@@ -55,13 +55,19 @@ DiamondTrap::~DiamondTrap()
 	return;
 }
 
-// void	attack(const std::string &target)
-// {
-// 	ScavTrap::attack(target);
-// 	return;
-// }
-
-void	whoAmI()
+void	DiamondTrap::attack(const std::string &target)
 {
+	ScavTrap::attack(target);
+	return;
+}
+
+void	DiamondTrap::whoAmI()
+{
+	if (this->_energyPoints <= 0)
+		std::cout << RED << "DiamondTrap " << this->_name << " tries to asking his self, but has no energy left." << RESET << std::endl;
+	else if(this->_hitPoints <= 0)
+		std::cout << RED << "DiamondTrap " << this->_name << " tries to asking his self, but has no hit points left." << RESET << std::endl;
+	else
+	std::cout << CYAN << "DiamondTrap " << this->_name << " is asking \"who am I ????\"." << RESET << std::endl;
 	return;
 }

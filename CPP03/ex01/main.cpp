@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 11:18:43 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/01 10:38:32 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/03/07 12:22:51 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,3 @@ int	main(void)
 	std::cout << std::endl;
 	return (0);
 }
-// besoin de la fonction de surche d'operateur ou pas ???
-// mes perso sont construits sous deux constructeurs differents ScavTrap et ClapTrap, est ce bon ?

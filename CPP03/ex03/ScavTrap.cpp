@@ -39,13 +39,13 @@ ScavTrap::ScavTrap(ScavTrap &copy): ClapTrap(copy)
 	return;
 }
 
-ScavTrap &ScavTrap::operator=(const ScavTrap &src)
+ScavTrap &ScavTrap::operator=(const ScavTrap &other)
 {
 	std::cout << "ScavTrap Assignation operator called" << std::endl;
-	this->_name = src._name;
-	this->_hitPoints = src._hitPoints;
-	this->_energyPoints = src._energyPoints;
-	this->_attackDamage = src._attackDamage;
+	this->_name = other._name;
+	this->_hitPoints = other._hitPoints;
+	this->_energyPoints = other._energyPoints;
+	this->_attackDamage = other._attackDamage;
 	return *this;
 }
 
@@ -72,7 +72,11 @@ void	ScavTrap::attack(const std::string &target)
 
 void	ScavTrap::guardGate()
 {
-	std::cout << "ScavTrap " << this->_name << " is now guarding the gate." << std::endl;
+	if (this->_energyPoints <= 0)
+		std::cout << RED << "ScavTrap " << this->_name << " tries to guarding the gate, but has no energy left." << RESET << std::endl;
+	else if(this->_hitPoints <= 0)
+		std::cout << RED << "ScavTrap " << this->_name << " tries to guarding the gate, but has no hit points left." << RESET << std::endl;
+	else
+	std::cout << CYAN << "ScavTrap " << this->_name << " is now guarding the gate." << RESET << std::endl;
+	return;
 }
-
-// test this->name

@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 10:52:43 by bfresque          #+#    #+#             */
-/*   Updated: 2024/02/21 14:46:20 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/03/06 13:40:52 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FIXED_HPP
 
 # include <iostream>
-// # include <cmath>
+# include <cmath>
 
 class Fixed
 {
