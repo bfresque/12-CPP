@@ -1,4 +1,4 @@
-NAME	=	ScavTrap
+NAME	=	Animal
 
 RED=\033[1;31m
 GREEN=\033[1;32m
@@ -8,15 +8,19 @@ MAGENTA=\033[1;35m
 CYAN=\033[1;36m
 RESET=\033[0m
 
-SRC	=	main.cpp \
-		ClapTrap.cpp \
-		ScavTrap.cpp \
+SRC	=	./srcs/main.cpp \
+		./srcs/Animal.cpp \
+		./srcs/WrongAnimal.cpp \
+		./srcs/WrongCat.cpp \
+		./srcs/Dog.cpp \
+		./srcs/Cat.cpp \
+		./srcs/Brain.cpp \
 
 OBJ_DIR = objs
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.cpp=.o)))
 
 CXX	=	c++
-CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow
+CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 RM = rm -rf
 
@@ -25,7 +29,7 @@ all: $(NAME)
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
-$(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: srcs/%.cpp | $(OBJ_DIR)
 	@$(CXX) $(CXXFLAGS) -o $@ -c $<
 
 $(NAME) : $(OBJ)

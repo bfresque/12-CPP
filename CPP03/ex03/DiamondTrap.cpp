@@ -6,13 +6,13 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 10:44:18 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/07 13:12:51 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/03/07 14:23:38 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap() : ClapTrap("Default_name_clap_name"), ScavTrap(), FragTrap()
+DiamondTrap::DiamondTrap() : ClapTrap("Default_name_clap_name"), FragTrap(), ScavTrap()
 {
 	this->_name = "Default_name";
 	this->_hitPoints = FragTrap::_hitPoints;
@@ -22,9 +22,10 @@ DiamondTrap::DiamondTrap() : ClapTrap("Default_name_clap_name"), ScavTrap(), Fra
 	return;
 }
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name)
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name), FragTrap(name), ScavTrap(name)
 {
 	this->_name = name;
+	ClapTrap::_name = name + "_clap_name";
 	this->_hitPoints = FragTrap::_hitPoints;
 	this->_energyPoints = ScavTrap::_energyPoints;
 	this->_attackDamage = FragTrap::_attackDamage;
@@ -32,7 +33,7 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), Scav
 	return;
 }
 
-DiamondTrap::DiamondTrap(DiamondTrap &copy): ClapTrap(copy), ScavTrap(copy), FragTrap(copy)
+DiamondTrap::DiamondTrap(DiamondTrap &copy): ClapTrap(copy), FragTrap(copy), ScavTrap(copy)
 {
 	std::cout << "DiamondTrap Copy Constructor called" << std::endl;
 	*this = copy;
@@ -64,10 +65,10 @@ void	DiamondTrap::attack(const std::string &target)
 void	DiamondTrap::whoAmI()
 {
 	if (this->_energyPoints <= 0)
-		std::cout << RED << "DiamondTrap " << this->_name << " tries to asking his self, but has no energy left." << RESET << std::endl;
+		std::cout << RED << "DiamondTrap " << this->_name << " tries to express himself, but has no energy left." << RESET << std::endl;
 	else if(this->_hitPoints <= 0)
-		std::cout << RED << "DiamondTrap " << this->_name << " tries to asking his self, but has no hit points left." << RESET << std::endl;
+		std::cout << RED << "DiamondTrap " << this->_name << " tries to express himself, but has no hit points left." << RESET << std::endl;
 	else
-	std::cout << CYAN << "DiamondTrap " << this->_name << " is asking \"who am I ????\"." << RESET << std::endl;
+	std::cout << CYAN << "DiamondTrap my name is : " << this->_name << " and my ClapTrap name is : " << ClapTrap::_name << RESET << std::endl;
 	return;
 }

@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 11:18:43 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/07 12:45:30 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/03/07 15:17:26 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int	main(void)
 		Bob.attack("a stone");
 	Bob.highFivesGuys();
 	Bob.takeDamage(99);
-	for (int i = 0; i < 96; i++)
-		Bob.beRepaired(1);
+	// for (int i = 0; i < 96; i++)
+	// 	Bob.beRepaired(1);
 	Bob.attack("a stone");
 	Bob.highFivesGuys();
 

@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/01 10:44:23 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/07 13:37:21 by bfresque         ###   ########.fr       */
+/*   Created: 2024/03/08 15:33:59 by bfresque          #+#    #+#             */
+/*   Updated: 2024/03/09 11:30:27 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DIAMONDTRAP_HPP
-# define DIAMONDTRAP_HPP
 
-# include "FragTrap.hpp"
-# include "ScavTrap.hpp"
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
-class DiamondTrap: public FragTrap, public ScavTrap
+# include <iostream>
+
+class Brain
 {
-	private:
-		std::string _name;
+	protected:
+		std::string ideas[100];
 	public:
-		DiamondTrap();
-		DiamondTrap(std::string name);
-		DiamondTrap(DiamondTrap &copy);
-		DiamondTrap &operator=(DiamondTrap &other);
-		~DiamondTrap();
-		void	whoAmI();
-		void	attack(const std::string &target);
+		Brain();
+		Brain(const Brain &copy);
+		Brain &operator=(const Brain &other);
+		~Brain();
+		void	addIdeas(std::string newIdeas);
+		void	readBrain() const;
 };
 
 #endif
