@@ -6,24 +6,23 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 12:38:46 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/11 10:27:34 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/03/11 13:09:15 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Dog.hpp"
 
-Dog::Dog() : Animal("Dog")
+Dog::Dog() : AAnimal("Dog")
 {
 	std::cout << "Dog Default constructor called" <<std::endl;
 	_myBrain = new Brain();
 	return;
 }
 
-Dog::Dog(const Dog &copy) : Animal("Dog")
+Dog::Dog(const Dog &copy) : AAnimal("Dog")
 {
 	std::cout << "Dog Copy constructor called" <<std::endl;
 	_myBrain = new Brain(*copy._myBrain);
-	//pas besoin de *this = copy; ????
 	return;
 }
 

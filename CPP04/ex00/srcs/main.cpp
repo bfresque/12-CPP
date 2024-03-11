@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 13:48:54 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/08 15:27:12 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/03/11 09:48:05 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int main()
 	std::cout << std::endl;
 	std::cout << Catty->getType() << " " << std::endl;
 	std::cout << Doggy->getType() << " " << std::endl;
+	std::cout << Default->getType() << " " << std::endl;
 	std::cout << std::endl;
 	Catty->makeSound(); // will output the cat sound!
 	Doggy->makeSound();

@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 15:34:12 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/11 13:27:09 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/03/09 11:43:10 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ Brain	&Brain::operator=(const Brain &other)
 
 	if (this != &other)
 	{
-		for (int i = 0; i < 100; i++)
+		for (int i = 0; i < 100; ++i)
 			this->ideas[i] = other.ideas[i];
 	}
 	return (*this);
@@ -45,7 +45,7 @@ Brain	&Brain::operator=(const Brain &other)
 
 void	Brain::addIdeas(std::string newIdeas)
 {
-	for (int i = 0; i < 110; i++)
+	for (int i = 0; i < 110; ++i)
 	{
 		if (i < 100)
 			ideas[i] = newIdeas;
@@ -61,10 +61,7 @@ void	Brain::addIdeas(std::string newIdeas)
 
 void	Brain::readBrain() const
 {
-	for (int i = 0; i < 100; i++)
-	{
-		std::cout << "Idea n° " << i+1 << " :";
+	for (int i = 0; i < 100; ++i)
 		std::cout << ideas[i] << std::endl;
-	}
 	return;
 }

@@ -1,58 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/08 12:38:46 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/11 10:27:34 by bfresque         ###   ########.fr       */
+/*   Created: 2024/03/08 12:38:56 by bfresque          #+#    #+#             */
+/*   Updated: 2024/03/11 13:09:18 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Dog.hpp"
+#include "../includes/Cat.hpp"
 
-Dog::Dog() : Animal("Dog")
+Cat::Cat() : AAnimal("Cat")
 {
-	std::cout << "Dog Default constructor called" <<std::endl;
+	std::cout << "Cat Default constructor called" << std::endl;
 	_myBrain = new Brain();
 	return;
 }
 
-Dog::Dog(const Dog &copy) : Animal("Dog")
+Cat::Cat(const Cat &copy) : AAnimal("Cat")
 {
-	std::cout << "Dog Copy constructor called" <<std::endl;
+	std::cout << "Cat Copy constructor called" <<std::endl;
 	_myBrain = new Brain(*copy._myBrain);
-	//pas besoin de *this = copy; ????
 	return;
 }
 
-Dog::~Dog()
+Cat::~Cat()
 {
-	std::cout << "Dog Default destructor called" <<std::endl;
+	std::cout << "Cat Default destructor called" <<std::endl;
 	delete _myBrain;
 	return;
 }
 
-Dog& Dog::operator=(const Dog& other)
+Cat& Cat::operator=(const Cat& other)
 {
-	std::cout << "Dog copy assignment operator called" << std::endl;
+	std::cout << "Cat copy assignment operator called" << std::endl;
 	if (this != &other)
 	{
-		delete _myBrain; // Delete existing brain to avoid memory leak
+		delete _myBrain;
 		_myBrain = new Brain(*other._myBrain);
 	}
 	this->type = other.type;
 	return (*this);
 }
 
-void	Dog::makeSound() const
+void	Cat::makeSound() const
 {
-	std::cout << "Woof!" << std::endl;
+	std::cout << "Meoooww!!!" << std::endl;
 	return;
 }
 
-Brain	*Dog::getBrain(void) const
+Brain	*Cat::getBrain(void) const
 {
 	return (_myBrain);
 }
