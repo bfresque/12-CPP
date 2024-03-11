@@ -1,4 +1,4 @@
-NAME	=	Animal
+NAME	=	Materia
 
 RED=\033[1;31m
 GREEN=\033[1;32m
@@ -9,7 +9,11 @@ CYAN=\033[1;36m
 RESET=\033[0m
 
 SRC	=	./srcs/main.cpp \
-		
+		./srcs/AMateria.cpp \
+		./srcs/Character.cpp \
+		./srcs/Cure.cpp \
+		./srcs/Ice.cpp \
+		./srcs/MateriaSource.cpp \
 
 OBJ_DIR = objs
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.cpp=.o)))

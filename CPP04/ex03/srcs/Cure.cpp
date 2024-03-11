@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:14:02 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/11 17:06:21 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/03/11 17:32:00 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ Cure* Cure::clone() const
 
 void Cure::use(ICharacter& target)
 {
-	std::cout << "XXXXXXXXX use Cure on " <<  target.getName() << std::endl;
+	std::cout << "* heals " <<  target.getName() << "\'s wounds *" << std::endl;
 	return;
 }

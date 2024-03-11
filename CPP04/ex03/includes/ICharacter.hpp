@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:07:43 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/11 16:37:13 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/03/11 17:20:01 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define ICHARACTER_HPP
 
 # include "./AMateria.hpp"
+
+class AMateria;
 
 class ICharacter
 {

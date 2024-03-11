@@ -6,11 +6,11 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:16:11 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/11 17:05:42 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/03/11 17:20:41 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "./MateriaSource.hpp"
+# include "../includes/MateriaSource.hpp"
 
 MateriaSource::MateriaSource()
 {
@@ -58,23 +58,23 @@ MateriaSource& MateriaSource::operator=(const MateriaSource &other)
 	return (*this);
 }
 
-void MateriaSource::learnMateria(AMateria* newMateria)
+void MateriaSource::learnMateria(AMateria* m)
 {
 	if (this->_nbMateria == 4)
 	{
 		std::cout << "MateriaSource can't learn more than 4 materias" << std::endl;
-		delete newMateria;
+		delete m;
 	}
-	else if (this->_nbMateria < 4 && newMateria != NULL)
+	else if (this->_nbMateria < 4 && m != NULL)
 	{
 		for (int i = 0; i < this->_nbMateria; i++) {
-			if (this->_inventory[i] == newMateria) {
-				std::cout << "MateriaSource " <<  newMateria->getType() << "is already learned" << std::endl;
+			if (this->_inventory[i] == m) {
+				std::cout << "MateriaSource " <<  m->getType() << "is already learned" << std::endl;
 				return;
 			}
 		}
-		this->_inventory[this->_nbMateria++] = newMateria;
-		std::cout << "MateriaSource learned materia \"" << newMateria->getType() << "\"" << std::endl;
+		this->_inventory[this->_nbMateria++] = m;
+		std::cout << "MateriaSource learned materia \"" << m->getType() << "\"" << std::endl;
 	}
 	return;
 }

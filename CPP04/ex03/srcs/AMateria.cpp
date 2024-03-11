@@ -6,11 +6,11 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:07:43 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/11 17:05:52 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/03/11 17:20:24 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "./AMateria.hpp"
+# include "../includes/AMateria.hpp"
 
 AMateria::AMateria()
 {

@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:07:43 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/11 16:49:59 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/03/11 17:21:06 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define AMATERIA_HPP
 
 # include <iostream>
-# include "./Character.hpp"
+# include "./ICharacter.hpp"
 
 class AMateria
 {

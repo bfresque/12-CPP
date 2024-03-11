@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:16:06 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/11 17:06:15 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/03/11 17:34:45 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,9 @@ std::string const & Character::getName() const
 	return (this->_name);
 }
 
-void Character::equip(AMateria* newMateria)
+void Character::equip(AMateria* m)
 {
-	if (!newMateria)
+	if (!m)
 	{
 		std::cout << "Error. No materia provided" << std::endl;
 		return;
@@ -84,48 +84,48 @@ void Character::equip(AMateria* newMateria)
 	if (this->_nbMateria >= 4)
 	{
 		std::cout << "Error. No more space in inventory" << std::endl;
-		delete newMateria;
+		delete m;
 		return;
 	}
 	for (int i = 0; i < 4; i++)
 	{
 		if (!this->_inventory[i])
 		{
-			this->_inventory[i] = newMateria;
-			std::cout << getName() << " is equipped with a new materia : " << newMateria->getType();
-			std::cout << " index : " << i << std::endl;
+			this->_inventory[i] = m;
+			std::cout << getName() << " is now equipped with a new materia : \"" << m->getType();
+			std::cout << "\", in the index : " << i << std::endl;
 			this->_nbMateria++;
 			return;
 		}
 	}
 	std::cout << "Error. No more space in inventory" << std::endl;
-	delete newMateria;
+	delete m;
 	return;
 }
 
-void Character::unequip(int index)
+void Character::unequip(int idx)
 {
-	if (index < 0 || index >= 4)
+	if (idx < 0 || idx >= 4)
 	{
-		std::cout << "Invalid index: " << index << std::endl;
+		std::cout << "Invalid index: " << idx << std::endl;
 		return;
 	}
-	if (!this->_inventory[index])
+	if (!this->_inventory[idx])
 	{
-		std::cout << getName() << " has nothing to un-equip in the index : " << index << std::endl;
+		std::cout << getName() << " has nothing to un-equip in the index : " << idx << std::endl;
 		return;
 	}
-	std::cout << getName() << " has un-equipped materia : " << this->_inventory[index]->getType();
-	std::cout << " index : " << index << std::endl;
-	delete this->_inventory[index];
-	this->_inventory[index] = NULL;
+	std::cout << getName() << " has un-equipped materia : " << this->_inventory[idx]->getType();
+	std::cout << " index : " << idx << std::endl;
+	delete this->_inventory[idx];
+	this->_inventory[idx] = NULL;
 	this->_nbMateria--;
 	return;
 }
 
-void Character::use(int index, ICharacter& target)
+void Character::use(int idx, ICharacter& target)
 {
-	if (index >= 0 && index < _nbMateria && this->_inventory[index] != NULL)
-		this->_inventory[index]->use(target);
+	if (idx >= 0 && idx < _nbMateria && this->_inventory[idx] != NULL)
+		this->_inventory[idx]->use(target);
 	return;
 }

@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:18:49 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/11 16:49:54 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/03/11 17:23:48 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define IMATERIASOURCE_HPP
 
 # include "./AMateria.hpp"
-# define MAX_MATERIAS 4
 
 class IMateriaSource
 {
