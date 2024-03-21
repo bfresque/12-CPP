@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 11:05:16 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/17 15:34:45 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/03/20 10:33:36 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define BUREAUCRAT_HPP
 
 # include <iostream>
+# include <ostream>
 
 # define BLACK	"\033[1m\033[30m"
 # define RED		"\033[1m\033[31m"
@@ -60,6 +61,6 @@ class Bureaucrat
 		std::string	getName() const;
 };
 
-std::ostream	&operator<<(std::ostream &o, Bureaucrat *B);
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
 
 #endif
