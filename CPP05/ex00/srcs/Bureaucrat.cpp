@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 11:05:19 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/20 10:33:00 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/03/21 11:12:45 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,9 @@ std::string	Bureaucrat::getName() const
 	return(this->_name);
 }
 
-std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat)
+std::ostream& operator<<(std::ostream &os, const Bureaucrat &bureaucrat)
 {
-    os << "Bureaucrat name: " << bureaucrat.getName() << ", Grade: " << bureaucrat.getGrade();
-    return os;
+	os << "Bureaucrat name: " << bureaucrat.getName() << ", Grade: " << bureaucrat.getGrade();
+	return (os);
 }
 

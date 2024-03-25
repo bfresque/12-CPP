@@ -1,4 +1,4 @@
-NAME	=	Form
+NAME	=	Intern
 
 RED=\033[1;31m
 GREEN=\033[1;32m
@@ -9,8 +9,11 @@ CYAN=\033[1;36m
 RESET=\033[0m
 
 SRC	=	./srcs/main.cpp \
-		./srcs/Form.cpp \
 		./srcs/Bureaucrat.cpp \
+		./srcs/AForm.cpp \
+		./srcs/PresidentialPardonForm.cpp \
+		./srcs/ShrubberyCreationForm.cpp \
+		./srcs/RobotomyRequestForm.cpp \
 
 OBJ_DIR = objs
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.cpp=.o)))

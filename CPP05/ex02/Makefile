@@ -1,4 +1,4 @@
-NAME	=	AAForm
+NAME	=	differentForm
 
 RED=\033[1;31m
 GREEN=\033[1;32m
@@ -10,6 +10,10 @@ RESET=\033[0m
 
 SRC	=	./srcs/main.cpp \
 		./srcs/Bureaucrat.cpp \
+		./srcs/AForm.cpp \
+		./srcs/PresidentialPardonForm.cpp \
+		./srcs/ShrubberyCreationForm.cpp \
+		./srcs/RobotomyRequestForm.cpp \
 
 OBJ_DIR = objs
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.cpp=.o)))

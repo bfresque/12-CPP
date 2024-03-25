@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 10:18:13 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/18 11:15:22 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/03/21 11:30:53 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Form
 		const std::string	_name;
 		bool				_signedStatus;
 		const int			_gradeToSign;
-		const int			_gradeToExecute; 
+		const int			_gradeToExecute;
 	
 	public:
 		Form();
@@ -42,19 +42,18 @@ class Form
 
 		void beSigned(const Bureaucrat& bureaucrat);
 
-		class GradeTooHighException : public std::exception
-		{
-			public:
-				const char* what() const noexcept override;
-		};
-
 		class GradeTooLowException : public std::exception
 		{
 			public:
-				const char* what() const noexcept override;
+				virtual const char *what() const throw();
+		};
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
 		};
 };
 
-std::ostream	&operator<<(std::ostream &o, Form *F);
+std::ostream	&operator<<(std::ostream &o, Form &F);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 10:19:02 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/18 11:14:43 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/03/21 11:35:07 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,36 +74,20 @@ void	Form::beSigned(const Bureaucrat& bureaucrat)
 		throw GradeTooLowException();
 }
 
-const char*	Form::GradeTooHighException::what() const noexcept
+const char*	Form::GradeTooHighException::what() const throw()
 {
 	return ("Form grade too high");
 }
-const char* Form::GradeTooLowException::what() const noexcept
+const char* Form::GradeTooLowException::what() const throw()
 {
 	return ("Form grade too low");
 }
 
-std::ostream& operator<<(std::ostream &o, const Form &f)
+std::ostream& operator<<(std::ostream &os, const Form &f)
 {
-	o << "Form " << f.getName()
+	os << "Form " << f.getName()
 	  << " (Signed: " << (f.isSigned() ? "Yes" : "No")
 	  << ", Grade to Sign: " << f.getGradeToSign()
 	  << ", Grade to Execute: " << f.getGradeToExecute() << ")";
-	return (o);
+	return (os);
 }
-
-
-// std::ostream& operator<<(std::ostream& o, const Form& form)
-// {
-// 	std::string signedStatusStr;
-// 	if (form.isSigned())
-// 		signedStatusStr = "Yes";
-// 	else
-// 		signedStatusStr = "No";
-	
-// 	o << "Form " << form.getName() 
-// 	<< " (Signed: " << signedStatusStr
-// 	<< ", Grade to Sign: " << form.getGradeToSign() 
-// 	<< ", Grade to Execute: " << form.getGradeToExecute() << ")";
-// 	return (o);
-// }

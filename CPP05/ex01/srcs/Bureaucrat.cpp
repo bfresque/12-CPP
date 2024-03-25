@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 11:05:19 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/18 11:14:35 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/03/21 11:30:03 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Bureaucrat.hpp"
+#include "../includes/Form.hpp"
 
 Bureaucrat::Bureaucrat() : _name("DefaultB"), _grade(150)
 {
@@ -106,7 +107,7 @@ std::string	Bureaucrat::getName() const
 
 /***************************************************************************************/
 
-void Bureaucrat::signForm(Form& form)
+void	Bureaucrat::signForm(Form& form)
 {
 	try
 	{
@@ -119,10 +120,9 @@ void Bureaucrat::signForm(Form& form)
 	}
 }
 
-std::ostream& operator<<(std::ostream &o, const Bureaucrat &b)
+std::ostream& operator<<(std::ostream &os, const Bureaucrat &bureaucrat)
 {
-	o << "Bureaucrat " << b.getName() << "\n Grade: " << b.getGrade() << std::endl;
-	return (o);
+	os << "Bureaucrat name: " << bureaucrat.getName() << ", Grade: " << bureaucrat.getGrade();
+	return (os);
 }
-
 
