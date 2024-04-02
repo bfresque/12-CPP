@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Intern.hpp                                         :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/25 10:42:38 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/25 10:59:35 by bfresque         ###   ########.fr       */
+/*   Created: 2024/04/02 10:08:53 by bfresque          #+#    #+#             */
+/*   Updated: 2024/04/02 11:24:02 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INTERN_HPP
-# define INTERN_HPP
+#ifndef BASE_HPP
+# define BASE_HPP
 
-#include <string>
-#include <iostream>
-#include "./AForm.hpp"
-#include "./PresidentialPardonForm.hpp"
-#include "./RobotomyRequestForm.hpp"
-#include "./ShrubberyCreationForm.hpp"
+# include <iostream>
+# include <limits>
+# include <cstdlib>
+# include <iomanip>
+# include <ctime>
 
-class Intern
+class Base
 {
 	public:
-		Intern();
-		Intern(const Intern &other);
-		~Intern();
-
-		Intern& operator=(const Intern &other);
-		AForm	*makeForm(const std::string newForm, const std::string targetFrom);
-
+		virtual ~Base() {}
 };
+
+class A : public Base {};
+class B : public Base {};
+class C : public Base {};
+
+Base *generate(void);
+void identify(Base* p);
+void identify(Base& p);
 
 #endif
