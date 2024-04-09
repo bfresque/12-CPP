@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 11:05:22 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/22 14:48:23 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/04/09 16:57:57 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,208 +14,42 @@
 #include "../includes/ShrubberyCreationForm.hpp"
 #include "../includes/RobotomyRequestForm.hpp"
 #include "../includes/PresidentialPardonForm.hpp"
+#include "../includes/Intern.hpp"
 #include <iostream>
 
-int main(void)
+int main()
 {
-	// Seed the random number generator with the current time
-	std::srand(std::time(NULL));
-
-	std::cout << "~~~~~ ShrubberyCreationForm ~~~~~" << std::endl;
-	std::cout << "Required grades: sign 145, exec 137" << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-
-	Bureaucrat Bob("Bob", 1);
-	Bureaucrat Jane("Jane", 140);
-	Bureaucrat John("John", 150);
-
-	ShrubberyCreationForm tree("tree");
-	ShrubberyCreationForm forest("forest");
+	Intern someRandomIntern;
+	Bureaucrat bureaucratTia("Tia", 6);
+	Bureaucrat bureaucratBob("Bob", 150);
+	AForm* form;
+	AForm* formP;
+	AForm* formR;
+	AForm* formS;
 
 	std::cout << std::endl;
-
-	try
-	{
-		std::cout << Bob << std::endl;
-		std::cout << tree << std::endl;
-		tree.execute(Bob);
-	}
-	catch (std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	formS = someRandomIntern.makeForm("ShrubberyCreationForm", "Home");
+	std::cout << *formS <<  std::endl;
+	std::cout << std::endl;
+	formR = someRandomIntern.makeForm("RobotomyRequestForm", "Bender");
+	std::cout << *formR <<  std::endl;
+	std::cout << std::endl;
+	formP = someRandomIntern.makeForm("PresidentialPardonForm", "Alice");
+	std::cout << *formP <<  std::endl;
+	std::cout << std::endl;
+	form = someRandomIntern.makeForm("UnknownForm", "Target");
 
 	std::cout << std::endl;
-
-	try
-	{
-		std::cout << John << std::endl;
-		std::cout << tree << std::endl;
-		tree.beSigned(John); //pouquoi cest pas pareil que jane ?
-	}
-	catch (std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	bureaucratTia.signAForm(*formS);
+	std::cout << *formS <<  std::endl;
+	bureaucratTia.signAForm(*formS);
 
 	std::cout << std::endl;
-
-	try
-	{
-		std::cout << Jane << std::endl;
-		std::cout << tree << std::endl;
-		tree.beSigned(Jane);
-		Jane.executeForm(tree);
-	}
-	catch (std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	bureaucratBob.signAForm(*formR);
 
 	std::cout << std::endl;
-
-	try
-	{
-		std::cout << Bob << std::endl;
-		tree.execute(Bob);
-		forest.beSigned(Bob); // pas de message ?
-		Bob.executeForm(forest);
-	}
-	catch (std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << "~~~~~ RobotomyRequestForm ~~~~~" << std::endl;
-	std::cout << "Required grades: sign 72, exec 45" << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-
-	Bureaucrat Tia("Tia", 1);
-	Bureaucrat Leo("Leo", 70);
-	Bureaucrat Max("Max", 100);
-
-	RobotomyRequestForm b("Oscar");
-	RobotomyRequestForm b2("Robert");
-
-	try
-	{
-		std::cout << Tia << std::endl;
-		std::cout << b << std::endl;
-		b.execute(Tia);
-	}
-	catch (std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-
-	std::cout << std::endl;
-
-	try
-	{
-		std::cout << Max << std::endl;
-		std::cout << b << std::endl;
-		b.beSigned(Max);
-	}
-	catch (std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-
-	std::cout << std::endl;
-
-	try
-	{
-		std::cout << Leo << std::endl;
-		std::cout << b << std::endl;
-		b.beSigned(Leo);
-		Leo.executeForm(b);
-	}
-	catch (std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-
-	std::cout << std::endl;
-
-	try
-	{
-		std::cout << Tia << std::endl;
-		b.execute(Tia);
-		b2.beSigned(Tia);
-		Tia.executeForm(b2);
-	}
-	catch (std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-
-	std::cout << std::endl;
-	std::cout << std::endl;
-	std::cout << "~~~~~ PresidentialPardonForm ~~~~~" << std::endl;
-	std::cout << "Required grades: sign 25, exec 5" << std::endl;
-	std::cout << std::endl;
-	std::cout << std::endl;
-
-	Bureaucrat Ava("Ava", 1);
-	Bureaucrat Sam("Sam", 20);
-	Bureaucrat Zoe("Zoe", 30);
-
-	PresidentialPardonForm c("Luffy");
-	PresidentialPardonForm c2("Peter");
-
-	try
-	{
-		std::cout << c << std::endl;
-		c.execute(Ava);
-	}
-	catch (std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-
-	std::cout << std::endl;
-
-	try
-	{
-		std::cout << Zoe << std::endl;
-		std::cout << c << std::endl;
-		c.beSigned(Zoe);
-	}
-	catch (std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-
-	std::cout << std::endl;
-
-	try
-	{
-		std::cout << Sam << std::endl;
-		std::cout << c << std::endl;
-		c.beSigned(Sam);
-		Sam.executeForm(c);
-	}
-	catch (std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-
-	std::cout << std::endl;
-
-	try
-	{
-		std::cout << Ava << std::endl;
-		c.execute(Ava);
-		c2.beSigned(Ava);
-		Ava.executeForm(c2);
-	}
-	catch (std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	delete formP;
+	delete formR;
+	delete formS;
 	return (0);
 }

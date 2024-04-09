@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 11:05:16 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/22 11:47:49 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/04/09 12:56:50 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@
 # define WHITE	"\033[1m\033[37m"
 # define RESET	"\033[0m"
 
-class AForm; // Forward declaration
+class AForm;
 
 class Bureaucrat
 {
 	private:
 		const std::string	_name;
-		int					_grade; //de 1 a 150
+		int					_grade;
 	
 	public:
 		Bureaucrat();

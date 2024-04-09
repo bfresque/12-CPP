@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 10:18:13 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/21 11:30:53 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/04/09 14:07:40 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <exception>
 # include <string>
 
-class Bureaucrat; // Forward declaration
+class Bureaucrat;
 
 class Form
 {

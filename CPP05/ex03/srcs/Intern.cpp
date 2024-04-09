@@ -6,11 +6,11 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 10:44:28 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/25 11:01:37 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/04/09 16:42:30 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/Intern.hpp"
+#include "../includes/Intern.hpp"
 
 Intern::Intern() {}
 
@@ -21,10 +21,10 @@ Intern::Intern(const Intern &other)
 
 Intern::~Intern() {}
 
-Intern& Intern::operator=(const Intern &other)
-{
-	return (*this);
-}
+// Intern& Intern::operator=(const Intern &other)
+// {
+// 	return (*this);
+// }
 
 static AForm	*makePresident(const std::string target)
 {
@@ -50,7 +50,7 @@ AForm	*Intern::makeForm(const std::string newForm, const std::string targetFrom)
 	{
 		if (newForm == forms[i])
 		{
-			std::cout << "Intern creates " << newForm << " now" << std::endl;
+			std::cout << GREEN << "Intern creates " << newForm << " now" << RESET << std::endl;
 			return (allForms[i](targetFrom));
 		}
 	}

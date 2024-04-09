@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 11:05:19 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/21 11:12:45 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/04/09 12:47:22 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,14 @@ Bureaucrat::Bureaucrat() : _name("DefaultB"), _grade(150)
 	return;
 }
 
-Bureaucrat::Bureaucrat(int grade) : _name("DefaultB"), _grade(grade)
+Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name)
 {
-	std::cout << "Bureaucrat Constructor called for : " << WHITE << getName() << RESET << " with the grade : " << WHITE << getGrade() << RESET << std::endl;
-	return;
-}
-
-Bureaucrat::Bureaucrat(const std::string name) : _name(name), _grade(150)
-{
-	std::cout << "Bureaucrat Constructor called for : " << WHITE << getName() << RESET << " with the grade : " << WHITE << getGrade() << RESET << std::endl;
-	return;
-}
-
-Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name), _grade(grade)
-{
+	if (grade > 150)
+		throw Bureaucrat::GradeTooLowException();
+	else if (grade < 1)
+		throw Bureaucrat::GradeTooHighException();
+	else
+		this->_grade = grade;
 	std::cout << "Bureaucrat Constructor called for : " << WHITE << getName() << RESET << " with the grade : " << WHITE << getGrade() << RESET << std::endl;
 	return;
 }
@@ -51,7 +45,7 @@ Bureaucrat::~Bureaucrat()
 
 /***************************************************************************************/
 
-Bureaucrat& Bureaucrat::operator=(const Bureaucrat &other) // Copy Assignement
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) // Copy Assignement
 {
 	std::cout << "Bureaucrat Copy Assignement called" << std::endl;
 	if (this == &other)

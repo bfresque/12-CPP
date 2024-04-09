@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 11:26:29 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/22 11:37:39 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/04/09 14:06:48 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class ShrubberyCreationForm : public AForm
 		ShrubberyCreationForm();
 		ShrubberyCreationForm(std::string target);
 		ShrubberyCreationForm(const ShrubberyCreationForm &other);
-		~ShrubberyCreationForm();
+		virtual ~ShrubberyCreationForm();
 
 		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other);
 

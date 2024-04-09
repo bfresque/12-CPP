@@ -14,6 +14,7 @@ SRC	=	./srcs/main.cpp \
 		./srcs/PresidentialPardonForm.cpp \
 		./srcs/ShrubberyCreationForm.cpp \
 		./srcs/RobotomyRequestForm.cpp \
+		./srcs/Intern.cpp \
 
 OBJ_DIR = objs
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.cpp=.o)))

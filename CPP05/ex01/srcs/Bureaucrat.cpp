@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 11:05:19 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/21 11:30:03 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/04/09 16:46:07 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,14 @@ Bureaucrat::Bureaucrat() : _name("DefaultB"), _grade(150)
 	return;
 }
 
-Bureaucrat::Bureaucrat(int grade) : _name("DefaultB"), _grade(grade)
+Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name)
 {
-	std::cout << "Bureaucrat Constructor called for : " << WHITE << getName() << RESET << " with the grade : " << WHITE << getGrade() << RESET << std::endl;
-	return;
-}
-
-Bureaucrat::Bureaucrat(const std::string name) : _name(name), _grade(150)
-{
-	std::cout << "Bureaucrat Constructor called for : " << WHITE << getName() << RESET << " with the grade : " << WHITE << getGrade() << RESET << std::endl;
-	return;
-}
-
-Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name), _grade(grade)
-{
+	if (grade > 150)
+		throw Bureaucrat::GradeTooLowException();
+	else if (grade < 1)
+		throw Bureaucrat::GradeTooHighException();
+	else
+		this->_grade = grade;
 	std::cout << "Bureaucrat Constructor called for : " << WHITE << getName() << RESET << " with the grade : " << WHITE << getGrade() << RESET << std::endl;
 	return;
 }
@@ -111,12 +105,17 @@ void	Bureaucrat::signForm(Form& form)
 {
 	try
 	{
+		if (form.isSigned() == true)
+		{
+			std::cout << YELLOW << form.getName() << " already signed " << RESET << std::endl;
+			return;
+		}
 		form.beSigned(*this);
-		std::cout << this->_name << " signed " << form.getName() << std::endl;
+		std::cout << GREEN << this->_name << " signed " << form.getName() << RESET <<std::endl;
 	}
 	catch (const Form::GradeTooLowException& e)
 	{
-		std::cout << this->_name << " couldn’t sign " << form.getName() << " because " << e.what() << std::endl;
+		std::cout << YELLOW << this->_name << " couldn’t sign " << form.getName() << " because " << e.what() << RESET << std::endl;
 	}
 }
 

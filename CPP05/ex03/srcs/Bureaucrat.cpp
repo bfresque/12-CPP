@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 11:05:19 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/22 11:49:11 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/04/09 16:53:45 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,16 +94,21 @@ const std::string	Bureaucrat::getName() const
 
 /***************************************************************************************/
 
-void Bureaucrat::signAForm(AForm &AForm)
+void Bureaucrat::signAForm(AForm &form)
 {
 	try
 	{
-		AForm.beSigned(*this);
-		std::cout << this->_name << " signed " << AForm.getName() << std::endl;
+		if (form.isSigned() == true)
+		{
+			std::cout << YELLOW << form.getName() << " already signed " << RESET << std::endl;
+			return;
+		}
+		form.beSigned(*this);
+		std::cout << GREEN << this->_name << " signed " << form.getName() << RESET <<std::endl;
 	}
 	catch (const AForm::GradeTooLowException& e)
 	{
-		std::cout << this->_name << " couldn’t sign " << AForm.getName() << " because " << e.what() << std::endl;
+		std::cout << YELLOW << this->_name << " couldn’t sign " << form.getName() << " because " << e.what() << RESET << std::endl;
 	}
 }
 

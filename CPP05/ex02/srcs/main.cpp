@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 11:05:22 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/22 14:48:23 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/04/09 16:03:50 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,11 @@
 #include "../includes/RobotomyRequestForm.hpp"
 #include "../includes/PresidentialPardonForm.hpp"
 #include <iostream>
+#include <ctime>
+
 
 int main(void)
 {
-	// Seed the random number generator with the current time
-	std::srand(std::time(NULL));
-
 	std::cout << "~~~~~ ShrubberyCreationForm ~~~~~" << std::endl;
 	std::cout << "Required grades: sign 145, exec 137" << std::endl;
 	std::cout << std::endl;
