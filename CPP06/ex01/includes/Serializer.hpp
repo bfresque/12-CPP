@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 10:08:53 by bfresque          #+#    #+#             */
-/*   Updated: 2024/04/02 10:16:29 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/04/10 17:01:19 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,17 @@
 # include <cstdlib>
 # include <iomanip>
 
-struct Data
-{
-	int value;
-};
+struct Data { int value; };
 
-class Serializer
-{
+class Serializer {
 	private:
 		Serializer();
-		Serializer(const Serializer&);
-		Serializer& operator=(const Serializer&);
+		Serializer(const Serializer &other);
+		Serializer &operator=(const Serializer &other);
+		~Serializer();
 	public:
-		static uintptr_t serialize(Data* ptr);
-		static Data* deserialize(uintptr_t raw);
+		static void* serialize(Data* ptr);
+		static Data* deserialize(void* raw);
 };
 
 #endif

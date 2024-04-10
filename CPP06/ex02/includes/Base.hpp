@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 10:08:53 by bfresque          #+#    #+#             */
-/*   Updated: 2024/04/02 11:24:02 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/04/10 17:20:32 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,12 @@
 # define BASE_HPP
 
 # include <iostream>
-# include <limits>
 # include <cstdlib>
-# include <iomanip>
-# include <ctime>
+# include <unistd.h>
 
-class Base
-{
+class Base {
 	public:
-		virtual ~Base() {}
+		virtual ~Base();
 };
 
 class A : public Base {};
