@@ -6,11 +6,11 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 11:01:08 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/29 11:03:43 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/04/10 10:18:31 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Converter.hpp"
+#include "../includes/ScalarConverter.hpp"
 
 int main(int argc, char **argv)
 {
@@ -19,5 +19,5 @@ int main(int argc, char **argv)
 		return (1);
 	}
 
-	Converter::convert((std::string)argv[1]);
+	ScalarConverter::convert((std::string)argv[1]);
 }

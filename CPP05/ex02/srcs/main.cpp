@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 11:05:22 by bfresque          #+#    #+#             */
-/*   Updated: 2024/04/09 16:03:50 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/04/10 09:44:13 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int main(void)
 	{
 		std::cout << John << std::endl;
 		std::cout << tree << std::endl;
-		tree.beSigned(John); //pouquoi cest pas pareil que jane ?
+		tree.beSigned(John);
 	}
 	catch (std::exception& e)
 	{
@@ -78,7 +78,7 @@ int main(void)
 	{
 		std::cout << Bob << std::endl;
 		tree.execute(Bob);
-		forest.beSigned(Bob); // pas de message ?
+		forest.beSigned(Bob);
 		Bob.executeForm(forest);
 	}
 	catch (std::exception& e)

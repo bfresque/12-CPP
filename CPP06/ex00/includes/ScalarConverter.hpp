@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Converter.hpp                                :+:      :+:    :+:   */
+/*   ScalarConverter.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 09:58:00 by bfresque          #+#    #+#             */
-/*   Updated: 2024/03/29 09:58:52 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/04/10 10:04:54 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONVERTER_HPP
-# define CONVERTER_HPP
+#ifndef SCALARCONVERTER_HPP
+# define SCALARCONVERTER_HPP
 
 # include <iostream>
 # include <limits>
@@ -27,13 +27,13 @@ typedef enum
 	PSEUDO
 }	t_type;
 
-class Converter
+class ScalarConverter
 {
-	public:
-		Converter();
-		Converter(const Converter &other);
-		~Converter();
-		Converter &operator=(const Converter &other);
+	private:
+		ScalarConverter();
+		ScalarConverter(const ScalarConverter &other);
+		~ScalarConverter();
+		ScalarConverter &operator=(const ScalarConverter &other);
 
 		static bool isChar(const std::string &input);
 		static bool isInt(const std::string &input);
@@ -49,6 +49,8 @@ class Converter
 		static void printInput(long double num, const std::string &input);
 
 		static bool verifOver(const std::string &str, t_type type);
+
+	public:
 		static void convert(const std::string &input);
 };
 

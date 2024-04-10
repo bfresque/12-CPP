@@ -9,7 +9,7 @@ CYAN=\033[1;36m
 RESET=\033[0m
 
 SRC	=	./srcs/main.cpp \
-		./srcs/Converter.cpp \
+		./srcs/ScalarConverter.cpp \
 
 OBJ_DIR = objs
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.cpp=.o)))
