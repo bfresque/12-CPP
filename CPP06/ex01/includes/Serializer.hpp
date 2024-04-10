@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 10:08:53 by bfresque          #+#    #+#             */
-/*   Updated: 2024/04/10 17:01:19 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/04/10 18:02:16 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 # define SERIALIZER_HPP
 
 # include <iostream>
-# include <limits>
-# include <cstdlib>
-# include <iomanip>
+# include <string>
+# include <stdint.h>
 
 struct Data { int value; };
 
@@ -27,8 +26,10 @@ class Serializer {
 		Serializer &operator=(const Serializer &other);
 		~Serializer();
 	public:
-		static void* serialize(Data* ptr);
-		static Data* deserialize(void* raw);
+		// static void*	serialize(Data* ptr);
+		// static Data*	deserialize(void* raw);
+		static uintptr_t		serialize(Data* ptr);
+		static Data*			deserialize(uintptr_t raw);
 };
 
 #endif

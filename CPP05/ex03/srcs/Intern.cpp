@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 10:44:28 by bfresque          #+#    #+#             */
-/*   Updated: 2024/04/09 16:42:30 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/04/10 16:40:43 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@ Intern::Intern(const Intern &other)
 
 Intern::~Intern() {}
 
-// Intern& Intern::operator=(const Intern &other)
-// {
-// 	return (*this);
-// }
+Intern& Intern::operator=(const Intern &other)
+{
+	(void)other;
+	return (*this);
+}
 
 static AForm	*makePresident(const std::string target)
 {

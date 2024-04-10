@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 10:10:23 by bfresque          #+#    #+#             */
-/*   Updated: 2024/04/10 17:01:22 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/04/10 18:02:33 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ Serializer &Serializer::operator=(const Serializer &other) { (void)other; return
 
 Serializer::~Serializer() {}
 
-void* Serializer::serialize(Data* ptr) { return static_cast<void*>(ptr); }
+uintptr_t Serializer::serialize(Data* ptr) { return (reinterpret_cast<uintptr_t>(ptr)); }
 
-Data* Serializer::deserialize(void* raw) { return static_cast<Data*>(raw); }
+Data* Serializer::deserialize(uintptr_t raw) { return (reinterpret_cast<Data*>(raw)); }
