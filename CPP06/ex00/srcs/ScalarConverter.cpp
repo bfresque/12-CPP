@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 09:57:55 by bfresque          #+#    #+#             */
-/*   Updated: 2024/04/10 17:37:32 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/04/11 10:52:13 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,9 +147,9 @@ bool ScalarConverter::verifOver(const std::string &str, t_type type) {
 
 void ScalarConverter::convert(const std::string &input) {
 	std::cout << std::fixed << std::setprecision(1);
-	int num = static_cast<int>(atoi(input.c_str()));
+	long int num = static_cast<int>(atoi(input.c_str()));
 	if (isChar(input) || isInt(input) || isFloat(input) || isDouble(input)) {
-		printChar(static_cast<char>(num), input);
+		printChar(static_cast<char>(input[0]), input);
 		printInt(static_cast<int>(num), input);
 		printFloat(static_cast<float>(std::strtof(input.c_str(), NULL)), input);
 		printDouble(static_cast<double>(std::strtod(input.c_str(), NULL)), input);
