@@ -6,40 +6,34 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 11:01:08 by bfresque          #+#    #+#             */
-/*   Updated: 2024/04/05 12:37:28 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/04/14 21:30:48 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/Array.hpp"
+#include "../includes/MutantStack.hpp"
 
-int main()
-{
-	try
-	{
-		Array<int> arr(5);
-		for (unsigned int i = 0; i < arr.size(); ++i)
-			arr[i] = i * 10;
+int main() {
+	MutantStack<int> mstack;
 
-		Array<int> arrCopy = arr;
-		arrCopy[2] = 100;
+	mstack.push(5);
+	mstack.push(17);
+	std::cout << "Top element: " << mstack.top() << std::endl;
+	mstack.pop();
+	std::cout << "Top element after pop: " << mstack.top() << std::endl;
 
-		std::cout << "Original array: ";
-		for (unsigned int i = 0; i < arr.size(); ++i)
-			std::cout << arr[i] << " ";
+	mstack.push(3);
+	mstack.push(5);
+	mstack.push(737);
+	mstack.push(0);
 
-		std::cout << "\nCopy array: ";
-		for (unsigned int i = 0; i < arrCopy.size(); ++i)
-			std::cout << arrCopy[i] << " ";
+	MutantStack<int>::iterator it = mstack.begin();
+	MutantStack<int>::iterator ite = mstack.end();
 
-		std::cout << "\n";
-
-		std::cout << "Accessing out of bounds: ";
-		std::cout << arr[arr.size()] << std::endl;
+	std::cout << "Stack elements: ";
+	while (it != ite) {
+		std::cout << *it << " ";
+		++it;
 	}
-	catch (std::exception& e)
-	{
-		std::cout << "Exception caught: out of bounds access." << std::endl;
-	}
-
+	std::cout << std::endl;
 	return (0);
 }
