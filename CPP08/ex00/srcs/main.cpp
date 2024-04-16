@@ -6,30 +6,26 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 11:01:08 by bfresque          #+#    #+#             */
-/*   Updated: 2024/04/14 18:32:37 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/04/16 15:12:45 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/easyfind.hpp"
 
 int main() {
-	// std::vector<int> vec = {1, 2, 3, 4, 5};
-	std::vector<int> vec;
-	vec.push_back(1);
-	vec.push_back(2);
-	vec.push_back(3);
-	vec.push_back(4);
-	vec.push_back(5);
+	int arr[] = { 103, 14, 12, 123, 73, 4, 3, 55};
+	std::vector<int> vec(arr, arr + sizeof(arr) / sizeof(arr[0]));
+
 	int num1 = 3;
 	int num2 = 42;
 	try {
-		int *found = easyfind(vec, num1);
-		std::cout << "Number found at address: " << found << std::endl;
+		std::vector<int>::iterator found = easyfind(vec, num1);
+		std::cout << GREEN << "\nNumber " << num1 << " found at position: " << std::distance(vec.begin(), found) << RESET << std::endl << std::endl;
 		found = easyfind(vec, num2);
-		std::cout << "Number found at address: " << found << std::endl;
+		std::cout << GREEN << "\nNumber " << num2 << " found at position: " << std::distance(vec.begin(), found) << RESET << std::endl << std::endl;
 	}
 	catch (const NotFound& e) {
-		std::cout << e.what() << std::endl;
+		std::cerr << RED << e.what() << RESET << std::endl;
 	}
-	return (0);
+	return 0;
 }

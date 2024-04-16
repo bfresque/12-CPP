@@ -1,48 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   span.cpp                                           :+:      :+:    :+:   */
+/*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 20:32:43 by bfresque          #+#    #+#             */
-/*   Updated: 2024/04/14 21:13:55 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/04/16 16:46:16 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../includes/Span.hpp"
+# include <stdio.h>
+
 
 Span::Span() : _rangeSize(0) { }
 
 Span::Span(unsigned int size) : _rangeSize(size) { }
 
+Span::Span(Span const & other) { *this = other; }
+
+Span &Span::operator=(Span const & other) { _rangeSize = other._rangeSize; return (*this); }
+
 Span::~Span() { }
 
 void	Span::addNumber(unsigned int number) {
-	if (_container.size() == _rangeSize)
+	if (_container.size() >= _rangeSize)
 		throw Span::numberAlreadySet();
 	_container.push_back(number);
 }
-
-// int	Span::shortestSpan() const {
-// 	if (_container.empty())
-// 		throw Span::containerIsEmpty();
-// 	else if (_container.size() == 1)
-// 		throw Span::containerLengthIsOne();
-// 	std::vector<int>copy = _container;
-// 	std::sort(copy.begin(), copy.end(), std::less<int>());
-// 	return *(copy.begin());
-// }
-
-// int	Span::longestSpan() const {
-// 	if (_container.empty())
-// 		throw Span::containerIsEmpty();
-// 	else if (_container.size() == 1)
-// 		throw Span::containerLengthIsOne();
-// 	std::vector<int>copy = _container;
-// 	std::sort(copy.begin(), copy.end(), std::greater<int>());
-// 	return *(copy.begin());
-// }
 
 int	Span::shortestSpan() const {
 	if (_container.empty())
@@ -67,20 +53,9 @@ int	Span::longestSpan() const {
 		throw Span::containerIsEmpty();
 	else if (_container.size() == 1)
 		throw Span::containerLengthIsOne();
+	
 	std::vector<int>copy = _container;
-	std::sort(copy.begin(), copy.end());
-	return (copy.back() - copy.front());
-}
-
-
-template <typename Iterator>
-void Span::addRange(Iterator begin, Iterator end) {
-	unsigned int rangeSize = std::distance(begin, end);
-	if ((_container.size() + rangeSize) > _rangeSize)
-		throw Span::numberAlreadySet();
-
-	while (begin != end) {
-		_container.push_back(*begin);
-		++begin;
-	}
+	int minSP = *std::min_element(copy.begin(), copy.end());
+	int maxSP = *std::max_element(copy.begin(), copy.end());
+	return (maxSP - minSP);
 }
