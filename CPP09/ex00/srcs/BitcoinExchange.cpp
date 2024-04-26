@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:24:16 by bfresque          #+#    #+#             */
-/*   Updated: 2024/04/22 16:35:19 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/04/26 11:30:34 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,28 @@ bool BitcoinExchange::validateDate(const std::string& date) {
 	if (mvalue < 1 || mvalue > 12)
 		return (false);
 
-	if (dvalue < 1 || dvalue > 31)
-		return (false);
-
+	switch (mvalue) {
+		case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+			if (dvalue < 1 || dvalue > 31)
+				return (false);
+			break;
+		case 4: case 6: case 9: case 11:
+			if (dvalue < 1 || dvalue > 30)
+				return (false);
+			break;
+		case 2:
+			if (yvalue % 4 == 0) {
+				if (dvalue < 1 || dvalue > 29)
+					return (false);
+			}
+			else {
+				if (dvalue < 1 || dvalue > 28)
+					return (false);
+			}
+			break;
+		default:
+			return (false);
+	}
 	return (true);
 }
 
