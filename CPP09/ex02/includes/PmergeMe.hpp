@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 10:32:45 by bfresque          #+#    #+#             */
-/*   Updated: 2024/05/16 15:41:55 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/05/23 11:59:26 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,14 @@ void print_container(T container, const std::string& message)
 }
 std::vector<int> ford_johnson_sort_vector(std::vector<int> v);
 std::list<int> ford_johnson_sort_list(std::list<int> l);
+
+class PmergeMe
+{
+	public:
+		PmergeMe();
+		PmergeMe(const PmergeMe& other);
+		PmergeMe& operator=(const PmergeMe& other);
+		~PmergeMe();
+};
 
 #endif

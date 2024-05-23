@@ -6,11 +6,19 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:24:16 by bfresque          #+#    #+#             */
-/*   Updated: 2024/04/26 11:30:34 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/05/23 11:59:49 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/BitcoinExchange.hpp"
+
+BitcoinExchange::BitcoinExchange() { }
+
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& other) { (void)other; }
+
+BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other) { (void)other; return (*this); }
+
+BitcoinExchange::BitcoinExchange::~BitcoinExchange() { }
 
 bool BitcoinExchange::isDateEarlier(const std::string& date1, const std::string& date2) {
 	std::tm time1 = {};
@@ -84,45 +92,60 @@ bool BitcoinExchange::validateDate(const std::string& date) {
 
 bool BitcoinExchange::checkParsing(const std::string& line, std::string& date, double& value) {
 	size_t pos = line.find('|');
-	if (pos == std::string::npos) {
-		std::cerr << "Error: bad input => " << line << std::endl;
+	if (pos == std::string::npos || pos == 0 || pos == line.length() - 1) {
+		std::cerr << RED << "Error: bad input => " << line << RESET << std::endl;
 		return (false);
 	}
 
-	date = line.substr(0, pos - 1);
-	std::string valueStr = line.substr(pos + 2);
+	if (line[pos - 1] != ' ' || line[pos + 1] != ' ') {
+		std::cerr << RED << "Error: bad input => " << line << RESET << std::endl;
+		return (false);
+	}
+
+	date = line.substr(0, pos);
+	std::string valueStr = line.substr(pos + 1);
+
+	date.erase(date.find_last_not_of(" \n\r\t") + 1);
+	date.erase(0, date.find_first_not_of(" \n\r\t"));
+	valueStr.erase(valueStr.find_last_not_of(" \n\r\t") + 1);
+	valueStr.erase(0, valueStr.find_first_not_of(" \n\r\t"));
 
 	if (!this->validateDate(date)) {
-		std::cerr << "Error: bad input => " << date << std::endl;
+		std::cerr << RED << "Error: bad input => " << date << RESET << std::endl;
 		return (false);
 	}
 
 	char* end;
 	value = std::strtod(valueStr.c_str(), &end);
 	if (*end != '\0') {
-		std::cerr << "Error: value is not a number." << std::endl;
+		std::cerr << RED << "Error: value is not a number." << RESET << std::endl;
 		return (false);
 	}
 
 	if (value < 0) {
-		std::cerr << "Error: not a positive number." << std::endl;
+		std::cerr << RED << "Error: not a positive number." << RESET << std::endl;
 		return (false);
 	}
 
 	if (value > 1000) {
-		std::cerr << "Error: too large a number." << std::endl;
+		std::cerr << RED << "Error: too large a number." << RESET << std::endl;
 		return (false);
 	}
+
 	return (true);
 }
 
 void BitcoinExchange::readInputFile() {
 	std::ifstream inputFile(this->_file.c_str());
 	if (!inputFile.is_open())
-		throw std::runtime_error("Error: couldn't open input file.");
+		throw std::runtime_error("couldn't open input file.");
 
 	std::string line;
 	std::getline(inputFile, line);
+
+	if (line != "date | value") {
+		throw std::runtime_error("the first line of the input file must be 'date | value'.");
+	}
 
 	while (std::getline(inputFile, line)) {
 		if (line.empty() || line == "date | value")
@@ -151,7 +174,7 @@ void BitcoinExchange::readInputFile() {
 void BitcoinExchange::initializeDatabase() {
 	std::ifstream dataFile("data.csv");
 	if (!dataFile.is_open())
-		throw std::runtime_error("Error: couldn't open database file.");
+		throw std::runtime_error("couldn't open database file.");
 
 	std::string line;
 	std::getline(dataFile, line);
@@ -166,3 +189,4 @@ void BitcoinExchange::initializeDatabase() {
 	}
 	dataFile.close();
 }
+

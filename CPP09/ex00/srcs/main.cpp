@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 11:01:08 by bfresque          #+#    #+#             */
-/*   Updated: 2024/04/22 16:27:58 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/05/23 09:41:16 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int main(int argc, char** argv) {
 		btcExchange.readInputFile();
 	}
 	catch (const std::exception& e) {
-		std::cerr << "Error: " << e.what() << std::endl;
+		std::cerr << RED << "Error: " << e.what() << RESET << std::endl;
 		return (1);
 	}
 	return (0);

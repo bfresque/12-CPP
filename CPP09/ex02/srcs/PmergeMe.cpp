@@ -6,11 +6,20 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:24:16 by bfresque          #+#    #+#             */
-/*   Updated: 2024/05/16 15:36:19 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/05/23 11:59:42 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/PmergeMe.hpp"
+
+
+PmergeMe::PmergeMe() { }
+
+PmergeMe::PmergeMe(const PmergeMe& other) { (void)other; }
+
+PmergeMe& PmergeMe::operator=(const PmergeMe& other) { (void)other; return (*this); }
+
+PmergeMe::PmergeMe::~PmergeMe() { }
 
 std::vector<int> ford_johnson_sort_vector(std::vector<int> v)
 {

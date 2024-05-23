@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 10:32:45 by bfresque          #+#    #+#             */
-/*   Updated: 2024/04/26 11:28:28 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/05/23 11:57:47 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,18 @@
 # include <iostream>
 # include <map>
 # include <fstream>
+# include <ctime>
+# include <string>
+# include <cstdlib>
+
+# define RED		"\033[1;31m"
+# define GREEN		"\033[1;32m"
+# define YELLOW		"\033[1;33m"
+# define BLUE		"\033[1;34m"
+# define MAGENTA	"\033[1;35m"
+# define CYAN		"\033[1;36m"
+# define BOLD		"\033[1m\033[37m"
+# define RESET		"\033[0m"
 
 class BitcoinExchange {
 	private:
@@ -26,6 +38,10 @@ class BitcoinExchange {
 		bool isDateEarlier(const std::string& date1, const std::string& date2);
 
 	public:
+		BitcoinExchange();
+		BitcoinExchange(const BitcoinExchange& other);
+		BitcoinExchange& operator=(const BitcoinExchange& other);
+		~BitcoinExchange();
 		void readInputFile();
 		void initializeDatabase();
 		void setFileName(const std::string& fileName);

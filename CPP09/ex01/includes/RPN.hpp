@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 10:32:45 by bfresque          #+#    #+#             */
-/*   Updated: 2024/04/26 12:28:04 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/05/23 12:04:04 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,17 @@
 # include <string>
 # include <sstream>
 # include <stack>
+# include <cmath>
 # include <cstdlib>
+
+class RPN
+{
+	public:
+		RPN();
+		RPN(const RPN& other);
+		RPN& operator=(const RPN& other);
+		~RPN();
+};
 
 double evaluate_rpn(const std::string& expression);
 
