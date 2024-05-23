@@ -6,21 +6,11 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 11:01:08 by bfresque          #+#    #+#             */
-/*   Updated: 2024/05/23 17:43:05 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/05/23 18:06:28 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/PmergeMe.hpp"
-
-void result(clock_t vectorTime, clock_t listTime)
-{
-	if (vectorTime < listTime) {
-		std::cout << BLUE << "========>        std::vector was faster         <========\n\n" << RESET;
-	}
-	else if (listTime < vectorTime) {
-		std::cout << YELLOW << "========>        std::list was faster         <========\n\n" << RESET;
-	}
-}
 
 int main(int ac, char **av) {
 	if (ac == 1) {
@@ -36,6 +26,10 @@ int main(int ac, char **av) {
 			return (1);
 		}
 		int num = atoi(av[i]);
+		if (has_duplicates(numbers_vector, num)) {
+			std::cerr << "Duplicate number: " << num << std::endl;
+			return (1);
+		}
 		numbers_vector.push_back(num);
 	}
 	std::vector<int> merged_vector = ford_johnson_sort_vector(numbers_vector);

@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:24:16 by bfresque          #+#    #+#             */
-/*   Updated: 2024/05/23 17:20:22 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/05/23 18:05:18 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,22 @@ bool is_positive_integer(const char *str) {
 			return (false);
 	}
 	return (true);
+}
+
+void result(clock_t vectorTime, clock_t listTime)
+{
+	if (vectorTime < listTime)
+		std::cout << BLUE << "\n      std::vector was faster\n" << RESET;
+	else if (listTime < vectorTime)
+		std::cout << YELLOW << "\n      std::list was faster\n" << RESET;
+}
+
+bool has_duplicates(const std::vector<int>& numbers, int num) {
+	for (size_t i = 0; i < numbers.size(); ++i) {
+		if (numbers[i] == num)
+			return (true);
+	}
+	return (false);
 }
 
 std::vector<int> ford_johnson_sort_vector(std::vector<int> v)
@@ -97,3 +113,4 @@ std::list<int> ford_johnson_sort_list(std::list<int> l)
 	}
 	return (sorted_list);
 }
+
