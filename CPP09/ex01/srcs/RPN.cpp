@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:24:16 by bfresque          #+#    #+#             */
-/*   Updated: 2024/05/23 12:07:07 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/05/23 14:16:47 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ double evaluate_rpn(const std::string& expression) {
 			if (token.find('.') != std::string::npos)
 				throw std::runtime_error("Error: Decimal numbers are not allowed");
 			double number = atof(token.c_str());
-			if (number >= 10)
-				throw std::runtime_error("Error: Numbers must be less than 10");
+			if (number < 0 || number >= 10)
+				throw std::runtime_error("Error: Numbers must be positive and less than 10");
 			stack.push(number);
 		}
 		else {
