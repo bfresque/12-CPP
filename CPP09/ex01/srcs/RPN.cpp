@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:24:16 by bfresque          #+#    #+#             */
-/*   Updated: 2024/05/23 14:16:47 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/05/24 14:46:16 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,55 @@ RPN::RPN(const RPN& other) { (void)other; }
 
 RPN& RPN::operator=(const RPN& other) { (void)other; return (*this); }
 
-RPN::RPN::~RPN() { }
+RPN::~RPN() { }
 
-double evaluate_rpn(const std::string& expression) {
+#include <iostream>
+#include <sstream>
+#include <stack>
+#include <string>
+#include <stdexcept>
+#include <cctype>
+#include <cmath>
+
+#include <iostream>
+#include <sstream>
+#include <stack>
+#include <string>
+#include <stdexcept>
+#include <cctype>
+#include <cmath>
+
+double RPN::evaluate_rpn(const std::string& expression) {
 	std::istringstream iss(expression);
 	std::stack<double> stack;
 	std::string token;
+	int operatorCount = 0;
+	int numberCount = 0;
 
 	while (iss >> token) {
-		if (isdigit(token[0]) || (token[0] == '-' && token.size() > 1)) {
+		bool isNumber = true;
+		for (size_t i = 0; i < token.size(); ++i) {
+			if (!isdigit(token[i]) && !(i == 0 && token[i] == '-' && token.size() > 1)) {
+				isNumber = false;
+				break;
+			}
+		}
+
+		if (isNumber) {
 			if (token.find('.') != std::string::npos)
 				throw std::runtime_error("Error: Decimal numbers are not allowed");
 			double number = atof(token.c_str());
 			if (number < 0 || number >= 10)
 				throw std::runtime_error("Error: Numbers must be positive and less than 10");
 			stack.push(number);
+			numberCount++;
 		}
 		else {
+			if (token.size() != 1 || (token[0] != '+' && token[0] != '-' && token[0] != '*' && token[0] != '/'))
+				throw std::runtime_error("Error: Invalid token");
 			if (stack.size() < 2)
-				throw std::runtime_error("Error: Value in the expression");
+				throw std::runtime_error("Error: Insufficient values in the expression");
+
 			double second = stack.top();
 			stack.pop();
 			double first = stack.top();
@@ -63,9 +93,10 @@ double evaluate_rpn(const std::string& expression) {
 					throw std::runtime_error("Error: Unknown operator");
 			}
 			stack.push(result);
+			operatorCount++;
 		}
 	}
-	if (stack.size() != 1)
+	if (stack.size() != 1 || numberCount <= operatorCount)
 		throw std::runtime_error("Error: The expression is invalid");
 	return (stack.top());
 }

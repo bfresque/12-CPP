@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 11:01:08 by bfresque          #+#    #+#             */
-/*   Updated: 2024/05/23 11:37:04 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/05/23 18:13:00 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ int main(int argc, char* argv[]) {
 		std::cerr << "Usage: ./RPN \"expression\"" << std::endl;
 		return 1;
 	}
+	RPN cal;
 	try {
-		double result = evaluate_rpn(argv[1]);
+		double result = cal.evaluate_rpn(argv[1]);
 		std::cout << result << std::endl;
 	}
 	catch (const std::runtime_error& e) {

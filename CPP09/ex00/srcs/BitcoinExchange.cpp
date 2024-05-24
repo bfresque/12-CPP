@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:24:16 by bfresque          #+#    #+#             */
-/*   Updated: 2024/05/23 15:36:46 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/05/24 14:38:53 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange& other) { (void)other; }
 
 BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other) { (void)other; return (*this); }
 
-BitcoinExchange::BitcoinExchange::~BitcoinExchange() { }
+BitcoinExchange::~BitcoinExchange() { }
 
 bool BitcoinExchange::isDateEarlier(const std::string& date1, const std::string& date2) {
 	std::tm time1 = {};
@@ -33,25 +33,28 @@ bool BitcoinExchange::isDateEarlier(const std::string& date1, const std::string&
 
 bool BitcoinExchange::validateDate(const std::string& date) {
 	if (date.length() != 10)
-		return false;
+		return (false);
 	
+	if (date[4] != '-' || date[7] != '-')
+		return (false);
+
 	std::string year = date.substr(0, 4);
 	std::string month = date.substr(5, 2);
 	std::string day = date.substr(8);
 	
 	for (size_t i = 0; i < year.length(); i++) {
 		if (!isdigit(year[i]))
-			return false;
+			return (false);
 	}
 
 	for (size_t i = 0; i < month.length(); i++) {
 		if (!isdigit(month[i]))
-			return false;
+			return (false);
 	}
 
 	for (size_t i = 0; i < day.length(); i++) {
 		if (!isdigit(day[i]))
-			return false;
+			return (false);
 	}
 	
 	int yvalue = atoi(year.c_str());
@@ -59,37 +62,37 @@ bool BitcoinExchange::validateDate(const std::string& date) {
 	int dvalue = atoi(day.c_str());
 
 	if (yvalue == 2009 && (mvalue < 1 || (mvalue == 1 && dvalue < 2)))
-		return false;
+		return (false);
 
 	if (yvalue < 2009)
-		return false;
+		return (false);
 
 	if (mvalue < 1 || mvalue > 12)
-		return false;
+		return (false);
 
 	switch (mvalue) {
 		case 1: case 3: case 5: case 7: case 8: case 10: case 12:
 			if (dvalue < 1 || dvalue > 31)
-				return false;
+				return (false);
 			break;
 		case 4: case 6: case 9: case 11:
 			if (dvalue < 1 || dvalue > 30)
-				return false;
+				return (false);
 			break;
 		case 2:
 			if (yvalue % 4 == 0) {
 				if (dvalue < 1 || dvalue > 29)
-					return false;
+					return (false);
 			}
 			else {
 				if (dvalue < 1 || dvalue > 28)
-					return false;
+					return (false);
 			}
 			break;
 		default:
-			return false;
+			return (false);
 	}
-	return true;
+	return (true);
 }
 
 bool BitcoinExchange::checkParsing(const std::string& line, std::string& date, double& value) {

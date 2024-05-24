@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 11:01:08 by bfresque          #+#    #+#             */
-/*   Updated: 2024/05/23 14:57:31 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/05/24 11:59:51 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int main(int argc, char** argv) {
 		return (1);
 	}
 	BitcoinExchange btcExchange;
-	btcExchange.initializeDatabase();
-	btcExchange.setFileName(argv[1]);
 
 	try {
+		btcExchange.initializeDatabase();
+		btcExchange.setFileName(argv[1]);
 		btcExchange.readInputFile();
 	}
 	catch (const std::exception& e) {
